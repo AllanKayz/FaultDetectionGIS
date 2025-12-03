@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Chart Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <canvas id = "myChart"></canvas>
+    </div>
+    <script>
+            let myChart = document.getElementById('myChart').getContext('2d');
+
+            let massPopChart = new Chart(myChart, {
+
+                type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar,polarArea
+                data: {
+                    labels:['Boston', 'Worcester','Springfield','Lowell','Cambridge', 'New Bedford'],
+                    datasets: [{
+                        label: 'Population',
+                        data: [
+                            617594, 181045, 153060, 106519, 105162, 95072
+                        ]
+                    }]
+                },
+                options:{}
+
+            });
+    </script>    
+</body>
+</html>

@@ -1,0 +1,24 @@
+<form method = "POST" action = "../server/test.php" id="frm_add">
+    <input type="hidden" value="add" name="action" id="action">
+    <div class="form-group">
+        <label for="type" class="control-label">Type:</label>
+        <input type="text" class="form-control" id="type" name="type" />
+    </div>
+    <div class="form-group">
+        <label for="fname" class="control-label">Name:</label>
+        <input type="text" class="form-control" id="fname" name="fname" />
+    </div>
+    <div class="form-group">
+        <label for="severity" class="control-label">Severity:</label>
+        <input type="text" class="form-control" id="severity" name="severity" />
+    </div>
+    <div class="form-group">
+        <label for="description" class="control-label">Description:</label>
+        <textarea rows="3" class="form-control" id="description" name="description" ></textarea>
+    </div>
+    <div class="form-group">
+        <label for="geom" class="control-label">Geometry:</label>
+        <input type="text" class="form-control" id="geom" name="geom" value="" />
+    </div>
+    <button type="submit" id="btn_add" class="btn btn-primary">Save</button>
+</form>

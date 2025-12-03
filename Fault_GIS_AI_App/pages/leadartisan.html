@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lead Artisan</title>
+    <meta http-equiv="refresh" content="180" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/header.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/header-second-bar.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../libs/fontawesome-free-5.3.1-web/css/fontawesome.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link href="../libs/bootstrap-4.1.3/dist/css/bootstrap.css" rel="stylesheet" id="bootstrap-css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../libs/leaflet/leaflet.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../libs/MDB-Free_4.5.11/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="../libs/MDB-Free_4.5.11/js/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="../libs/bootstrap-4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+    <script src="../libs/leaflet/leaflet.js"></script>
+    <script src="../libs/fontawesome-free-5.3.1-web/js/fontawesome.min.js"></script>
+</head>
+
+<body>
+    <header class="header-two-bars">
+        <div class="header-first-bar">
+            <div class="header-limiter">
+                <h1><a href="#">Company<span>logo</span></a></h1>
+                <nav>
+                    <a href="#">Messages <span class="badge badge-light">9</span></a>
+                    <a href="register.html">Employees Register</a>
+                    <a href="#">Reports</a>
+                </nav>
+                <a href="faultmap.html" class="logout-button">Logout</a>
+            </div>
+        </div>
+
+        <div class="header-second-bar">
+            <div class="header-limiter">
+                <nav class="nav justify-content-end nav-pills" id="pills-tab" role="tablist">
+                    <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                        aria-controls="pills-home" aria-selected="true"><img src="../img/mapicon.png" width='20px'
+                            height='20px'> Faults Map</a>
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                        aria-controls="pills-profile" aria-selected="false"><i class="fa fa-file-text"></i> Outages
+                        Statistics</a>
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                        aria-controls="pills-contact" aria-selected="false"><i class="fa fa-print"></i> Print</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div id="foreman">
+                    <div id="map"> </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 10px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Outage Statistics</h4>
+                                <p class="category">No faults Projected Revenue</p>
+                            </div>
+                            <div class="content">
+                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+
+                                <div class="footer">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-info"></i> Current Revenue
+                                        <i class="fa fa-circle text-danger"></i> Outage Loss
+                                        <i class="fa fa-circle text-warning"></i> Fuel Loss
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-clock-o"></i> Updated 2 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Energy Statistics</h4>
+                                <p class="category">Faults and Employee Numbers</p>
+                            </div>
+                            <div class="content">
+                                <div id="chartHours" class="ct-chart"></div>
+                                <div class="footer">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-info"></i> Open
+                                        <i class="fa fa-circle text-danger"></i> Click
+                                        <i class="fa fa-circle text-warning"></i> Click Second Time
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+    </footer>
+</body>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../css/chart.css" />
+
+<script src="../js/chartist.min.js"></script>
+<script src="../js/bootstrap-notify.js"></script>
+
+<script src="../js/foreman.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        foreman.initAddMap();
+        //foreman.showNotification();
+    });
+</script>
+
+</html>
