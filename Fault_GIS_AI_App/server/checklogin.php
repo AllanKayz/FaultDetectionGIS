@@ -1,33 +1,16 @@
 <?php
-    
-    include("../dbcon/conn.php");
+session_start();
+include_once("auth.php");
 
- 
-    $db = new dbObj();
-    $connString =  $db->getConnstring();
-    $conn = $connString;
+$usermail = $_POST['user'];
+$userpwd = $_POST['password'];
 
-    $usermail = $_POST['user'];
-    $userpwd = $_POST['password'];
+$user_data = authenticate_user($usermail, $userpwd);
 
-    $usermail = stripslashes($usermail);
-    $userpwd = stripslashes($userpwd);
-
-    $usermail = pg_escape_string($usermail);
-    $userpwd = pg_escape_string($userpwd);
-
-    $psql = " SELECT * FROM employees WHERE email = '$usermail' AND password = '$userpwd'";
-    $result = pg_query($conn, $psql) or die("error to fetch employees data");
-
-    $count = pg_num_rows($result);
-
-    if($count ==1)
-    {
-        header("location: ../pages/faultmap.html");
-    }
-    else{
-        echo "Wrong Username or Password";
-        //header("location: ../index.php");
-    }
-
+if ($user_data) {
+    $_SESSION['user'] = $usermail;
+    header("location: ../pages/faultmap.html");
+} else {
+    header("location: ../index.html?error=1");
+}
 ?>
